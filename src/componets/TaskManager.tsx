@@ -6,10 +6,9 @@ import { addTask } from "../Redux/taskSlice";
 const TaskManager = () => {
   const [task, setTask] = useState("");
   const dispatch = useDispatch();
-  console.log(task);
-  
 
   const handleTask = () => {
+    console.log(task);
     if (!task.trim()) return;
     dispatch(addTask(task));
     setTask("");
@@ -21,7 +20,6 @@ const TaskManager = () => {
         Task Manager
       </Typography>
 
-      {/* ✅ Box instead of Typography */}
       <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
         <TextField
           label="Add Task"
@@ -30,7 +28,7 @@ const TaskManager = () => {
           onChange={(e) => setTask(e.target.value)}
         />
 
-        <Button variant="contained" onClick={handleTask}>
+        <Button variant="outlined" onClick={handleTask} disabled={!task}>
           Add
         </Button>
       </Box>
